@@ -5,6 +5,7 @@ import './assets/styles/index.scss';
 // import { Filters } from './components/Filters/Filters';
 import { TicketsList } from './components/TicketsList/TicketsList';
 import { Ticket } from './core/types/Ticket';
+import { SortType } from './core/types/Sort.type';
 
 // import { Filter } from './core/types/Filter';
 // import { SortType } from './core/types/Sort.type';
@@ -12,6 +13,7 @@ import { Ticket } from './core/types/Ticket';
 // import { useTickets } from './core/hooks/useTickets';
 
 import Logo from './components/Logo/Logo';
+import Sort from './components/Sort/Sort';
 
 interface Props {
   // activeTodoCount: number;
@@ -61,9 +63,16 @@ const TicketsData: Ticket[] = [
 ];
 
 const App: React.FC<Props> = () => {
+  // Sort and filtering
+  const [sort, setSort] = useState<SortType>('cheap');
+  const onSortChange = useCallback((type: SortType) => setSort(type), []);
+
+  // Loading tickets
+  // const [tickets, isLoading, noFiltered, hasFail] = useTickets(sort, filters);
   return (
     <div>
       <Logo />
+      <Sort onChange={onSortChange} />
       <TicketsList tickets={TicketsData} />
     </div>
   );
