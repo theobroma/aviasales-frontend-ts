@@ -1,0 +1,11 @@
+// @import 'tachyons-flexbox';
+// @import 'tachyons-spacing';
+
+// Local
+@import 'variables';
+@import 'grid';
+
+.App {
+  text-align: center;
+  color: $c-orange;
+}
