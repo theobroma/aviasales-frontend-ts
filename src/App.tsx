@@ -2,7 +2,7 @@ import React, { useCallback, useState } from 'react';
 import './assets/styles/index.scss';
 import Layout from './components/Layout/Layout';
 // import { Sort } from './components/Sort/Sort';
-// import { Filters } from './components/Filters/Filters';
+import Filters from './components/Filters/Filters';
 import { TicketsList } from './components/TicketsList/TicketsList';
 // import { Ticket } from './core/types/Ticket';
 import { SortType } from './core/types/Sort.type';
@@ -44,44 +44,43 @@ const App: React.FC<Props> = () => {
         })
       ),
   ]);
-  console.log(filters);
 
   const onSortChange = useCallback((type: SortType) => setSort(type), []);
-  // const onFiltersChange = useCallback(
-  //   (count: number, value: boolean) => {
-  //     // If change `all`, change all filters
-  //     if (count === -1) {
-  //       setFilters(
-  //         filters.map((filter) => Object.assign(filter, { selected: value }))
-  //       );
-  //       return;
-  //     }
+  const onFiltersChange = useCallback(
+    (count: number, value: boolean) => {
+      // If change `all`, change all filters
+      if (count === -1) {
+        setFilters(
+          filters.map((filter) => Object.assign(filter, { selected: value }))
+        );
+        return;
+      }
 
-  //     // Set new value in filter
-  //     const newFilters: Filter[] = filters.map((filter) => {
-  //       if (count === filter.count) {
-  //         filter.selected = value;
-  //       }
+      // Set new value in filter
+      const newFilters: Filter[] = filters.map((filter) => {
+        if (count === filter.count) {
+          filter.selected = value;
+        }
 
-  //       return filter;
-  //     });
+        return filter;
+      });
 
-  //     // Check and update the `all` filter
-  //     const isCanNotSelected = !!newFilters.find(
-  //       (el) => el.count !== -1 && !el.selected
-  //     );
-  //     setFilters(
-  //       filters.map((filter) => {
-  //         if (filter.count === -1) {
-  //           filter.selected = !isCanNotSelected;
-  //         }
+      // Check and update the `all` filter
+      const isCanNotSelected = !!newFilters.find(
+        (el) => el.count !== -1 && !el.selected
+      );
+      setFilters(
+        filters.map((filter) => {
+          if (filter.count === -1) {
+            filter.selected = !isCanNotSelected;
+          }
 
-  //         return filter;
-  //       })
-  //     );
-  //   },
-  //   [filters]
-  // );
+          return filter;
+        })
+      );
+    },
+    [filters]
+  );
 
   // Loading tickets
   const [tickets, isLoading, noFiltered, hasFail] = useTickets(sort, filters);
@@ -91,7 +90,7 @@ const App: React.FC<Props> = () => {
       loading={isLoading}
       noFiltered={noFiltered}
       sort={<Sort onChange={onSortChange} />}
-      // filters={<Filters filters={filters} onChange={onFiltersChange} />}
+      filters={<Filters filters={filters} onChange={onFiltersChange} />}
       tickets={<TicketsList tickets={tickets} />}
     />
   );

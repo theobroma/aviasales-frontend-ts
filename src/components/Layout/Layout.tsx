@@ -10,7 +10,7 @@ interface Props {
   fail: boolean;
   noFiltered: boolean;
 
-  // filters: JSX.Element;
+  filters: JSX.Element;
   sort: JSX.Element;
   tickets: JSX.Element;
 }
@@ -30,7 +30,7 @@ function Layout({
   loading,
   fail,
   noFiltered,
-  // filters,
+  filters,
   sort,
   tickets,
 }: Props): JSX.Element {
@@ -49,7 +49,7 @@ function Layout({
           <h1>Поиск билетов на aviasales</h1>
         </VisuallyHidden>
 
-        {/* <div className="layout_Filters">{filters}</div> */}
+        <div className="layout_Filters">{filters}</div>
 
         <div className="layoutSort">{sort}</div>
 
