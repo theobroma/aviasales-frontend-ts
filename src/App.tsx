@@ -1,6 +1,6 @@
 import React, { useCallback, useState } from 'react';
 import './assets/styles/index.scss';
-// import { Layout } from './components/Layout/Layout';
+import Layout from './components/Layout/Layout';
 // import { Sort } from './components/Sort/Sort';
 // import { Filters } from './components/Filters/Filters';
 import { TicketsList } from './components/TicketsList/TicketsList';
@@ -12,7 +12,6 @@ import { Filter } from './core/types/Filter';
 import { plural } from './core/lib/plural';
 import { useTickets } from './core/hooks/useTickets';
 
-import Logo from './components/Logo/Logo';
 import Sort from './components/Sort/Sort';
 // Mock data for tickets if needed
 // import TicketsData from './core/mock/TicketsMock';
@@ -87,11 +86,14 @@ const App: React.FC<Props> = () => {
   // Loading tickets
   const [tickets, isLoading, noFiltered, hasFail] = useTickets(sort, filters);
   return (
-    <div>
-      <Logo />
-      <Sort onChange={onSortChange} />
-      <TicketsList tickets={tickets} />
-    </div>
+    <Layout
+      fail={hasFail}
+      loading={isLoading}
+      noFiltered={noFiltered}
+      sort={<Sort onChange={onSortChange} />}
+      // filters={<Filters filters={filters} onChange={onFiltersChange} />}
+      tickets={<TicketsList tickets={tickets} />}
+    />
   );
 };
 

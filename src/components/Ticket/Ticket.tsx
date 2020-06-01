@@ -3,7 +3,7 @@ import shortid from 'shortid';
 
 import './Ticket.css';
 
-import { Card } from '../Card/Card';
+import Card from '../Card/Card';
 import { Ticket, TicketSegment } from '../../core/types/Ticket';
 import { plural } from '../../core/lib/plural';
 import { formatPrice } from '../../core/lib/formatPrice';
