@@ -8,7 +8,7 @@ interface Props {
   onChange: (type: SortType) => void;
 }
 
-export const Sort = React.memo(function Sort(props: Props) {
+const Sort = React.memo(function Sort(props: Props) {
   const onChange = useCallback(
     (ev) => props.onChange(ev.target.value as SortType),
     [props]
