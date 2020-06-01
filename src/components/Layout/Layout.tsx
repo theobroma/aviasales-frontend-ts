@@ -54,6 +54,7 @@ function Layout({
         <div className="layoutSort">{sort}</div>
 
         <div className="layout_Tickets">
+          {/* eslint-disable no-nested-ternary */}
           {fail ? (
             <LayoutMessage>
               Не удалось загрузить билеты. Попробуйте перезагрузить страницу,
@@ -66,6 +67,7 @@ function Layout({
           ) : (
             tickets
           )}
+          {/* eslint-enable no-nested-ternary */}
         </div>
       </div>
     </>

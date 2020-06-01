@@ -56,9 +56,7 @@ function TicketSegmentFC({ segment }: TicketSegmentProps) {
   );
 }
 
-export const TicketFC = React.memo(function ({
-  ticket,
-}: TicketProps): JSX.Element {
+export const TicketFC: React.FC<TicketProps> = React.memo(({ ticket }) => {
   return (
     <Card>
       <section className="ticket_Container">

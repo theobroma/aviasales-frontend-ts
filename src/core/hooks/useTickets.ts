@@ -66,9 +66,11 @@ export function compareTickets(sort: SortType, a: Ticket, b: Ticket): number {
 
   const byFast = () => getDuration(a) - getDuration(b);
   const byCheap = () => a.price - b.price;
-  const byCompanyName = () =>
-    a.carrier > b.carrier ? 1 : a.carrier < b.carrier ? -1 : 0; // if tickets the equals
-
+  const byCompanyName = () => {
+    /* eslint-disable no-nested-ternary */
+    return a.carrier > b.carrier ? 1 : a.carrier < b.carrier ? -1 : 0; // if tickets the equals
+    /* eslint-enable no-nested-ternary */
+  };
   switch (sort) {
     case 'cheap':
       return byCheap() || byFast() || byCompanyName();
@@ -96,14 +98,14 @@ export function useTickets(
     setLoading(true);
 
     const subscribe = loadTickets().subscribe({
-      next(tickets: Ticket[]) {
-        setAllTickets(tickets);
+      next(ticketsArr: Ticket[]) {
+        setAllTickets(ticketsArr);
       },
       error() {
         setFail(true);
         setLoading(false);
       },
-      complete(...args) {
+      complete() {
         setLoading(false);
       },
     });
