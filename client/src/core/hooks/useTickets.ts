@@ -10,9 +10,7 @@ import {
 } from 'rxjs/operators';
 
 import { useEffect, useState } from 'react';
-import { Ticket } from '../types/Ticket';
-import { SortType } from '../types/Sort.type';
-import { Filter } from '../types/Filter';
+import { Ticket, Filter, SortType } from '../types';
 
 const API_URL = 'https://front-test.beta.aviasales.ru';
 

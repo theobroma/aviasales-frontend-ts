@@ -1,5 +1,5 @@
 import React from 'react';
-import { Ticket } from '../../core/types/Ticket';
+import { Ticket } from '../../core/types';
 
 import './TicketsList.css';
 

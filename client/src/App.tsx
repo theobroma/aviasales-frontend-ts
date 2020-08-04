@@ -3,20 +3,15 @@ import './assets/styles/index.scss';
 import Layout from './components/Layout/Layout';
 import Filters from './components/Filters/Filters';
 import { TicketsList } from './components/TicketsList/TicketsList';
-import { SortType } from './core/types/Sort.type';
-import { Filter } from './core/types/Filter';
 import { plural } from './core/lib/plural';
 import { useTickets } from './core/hooks/useTickets';
 
 import Sort from './components/Sort/Sort';
+import { SortType, Filter } from './core/types';
 // Mock data for tickets if needed
 // import TicketsData from './core/mock/TicketsMock';
 
-interface Props {
-  // none;
-}
-
-const App: React.FC<Props> = () => {
+const App: React.FC = () => {
   const stopsPlural = plural(
     ['пересадка', 'пересадки', 'пересадок'],
     'Без пересадок',

@@ -2,7 +2,7 @@ import React, { useCallback } from 'react';
 
 import './Filters.css';
 import Card from '../Card/Card';
-import { Filter } from '../../core/types/Filter';
+import { Filter } from '../../core/types';
 import Checkbox from '../Checkbox/Checkbox';
 import { VisuallyHidden } from '../VisuallyHidden/VisuallyHidden';
 

@@ -2,7 +2,7 @@ import React, { useCallback } from 'react';
 
 import './Sort.css';
 
-import { SortType } from '../../core/types/Sort.type';
+import { SortType } from '../../core/types';
 
 interface Props {
   onChange: (type: SortType) => void;

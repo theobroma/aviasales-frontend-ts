@@ -1,4 +1,4 @@
-import { Ticket } from '../types/Ticket';
+import { Ticket } from '../types';
 
 const TicketsData: Ticket[] = [
   {
