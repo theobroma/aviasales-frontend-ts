@@ -19,7 +19,7 @@ interface Props {
 const App: React.FC<Props> = () => {
   const stopsPlural = plural(
     ['пересадка', 'пересадки', 'пересадок'],
-    'Без пересадок'
+    'Без пересадок',
   );
 
   // Sort and filtering
@@ -37,7 +37,7 @@ const App: React.FC<Props> = () => {
           count,
           selected: true,
           label: stopsPlural(count),
-        })
+        }),
       ),
   ]);
 
@@ -47,7 +47,7 @@ const App: React.FC<Props> = () => {
       // If change `all`, change all filters
       if (count === -1) {
         setFilters(
-          filters.map((filter) => Object.assign(filter, { selected: value }))
+          filters.map((filter) => Object.assign(filter, { selected: value })),
         );
         return;
       }
@@ -63,7 +63,7 @@ const App: React.FC<Props> = () => {
 
       // Check and update the `all` filter
       const isCanNotSelected = !!newFilters.find(
-        (el) => el.count !== -1 && !el.selected
+        (el) => el.count !== -1 && !el.selected,
       );
       setFilters(
         filters.map((filter) => {
@@ -72,10 +72,10 @@ const App: React.FC<Props> = () => {
           }
 
           return filter;
-        })
+        }),
       );
     },
-    [filters]
+    [filters],
   );
 
   // Loading tickets

@@ -28,7 +28,7 @@ interface ResponseTicketPool {
 function fetch<T>(url: string): Observable<T> {
   return fromFetch(url, {}).pipe(
     switchMap((response) => response.json()),
-    retry(3)
+    retry(3),
   );
 }
 
@@ -38,16 +38,16 @@ export function loadTickets(): Observable<Ticket[]> {
     switchMap((searchId) =>
       fetch<ResponseTicketPool>(`${API_URL}/tickets?searchId=${searchId}`).pipe(
         repeat(),
-        takeWhile(({ stop }) => !stop, true)
-      )
+        takeWhile(({ stop }) => !stop, true),
+      ),
     ),
-    scan((acc, { tickets }) => acc.concat(tickets || []), [] as Ticket[])
+    scan((acc, { tickets }) => acc.concat(tickets || []), [] as Ticket[]),
   );
 }
 
 export function hasTicketFitsTheFilter(
   filters: Filter[],
-  ticket: Ticket
+  ticket: Ticket,
 ): boolean {
   return ticket.segments.reduce((allSegmentFits, { stops }) => {
     const haveFitsFilterForSegment = filters
@@ -86,7 +86,7 @@ export function compareTickets(sort: SortType, a: Ticket, b: Ticket): number {
 
 export function useTickets(
   sort: SortType,
-  filters: Filter[]
+  filters: Filter[],
 ): [Ticket[], boolean, boolean, boolean] {
   const [hasFail, setFail] = useState<boolean>(false);
   const [isLoading, setLoading] = useState<boolean>(false);
@@ -118,7 +118,7 @@ export function useTickets(
       allTickets
         .sort(compareTickets.bind(null, sort))
         .filter(hasTicketFitsTheFilter.bind(null, filters))
-        .slice(0, 5)
+        .slice(0, 5),
     );
   }, [allTickets, sort, filters]);
 

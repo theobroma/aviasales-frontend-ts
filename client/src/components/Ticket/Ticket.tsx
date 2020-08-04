@@ -23,7 +23,7 @@ interface TicketProps {
 function TicketSegmentFC({ segment }: TicketSegmentProps) {
   const stopsPlural = plural(
     ['пересадка', 'пересадки', 'пересадок'],
-    'Без пересадок'
+    'Без пересадок',
   );
 
   return (

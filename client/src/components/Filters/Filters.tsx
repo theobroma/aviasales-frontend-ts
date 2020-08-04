@@ -16,7 +16,7 @@ const Filters = React.memo(function Filters(props: Props): JSX.Element {
     (ev) => {
       props.onChange(parseInt(ev.target.value, 10), ev.target.checked);
     },
-    [props]
+    [props],
   );
 
   return (
