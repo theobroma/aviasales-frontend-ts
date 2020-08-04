@@ -1,52 +1,34 @@
 {
-  "name": "aviasales-frontend-ts",
-  "version": "0.1.0",
-  "private": true,
+  "name": "samurai-social-network",
+  "version": "1.0.0",
+  "private": false,
+  "description": "React+typescript application.",
+  "main": "index.js",
   "dependencies": {
-    "@testing-library/jest-dom": "^5.11.2",
-    "@testing-library/react": "^10.4.7",
-    "@testing-library/user-event": "^12.1.0",
-    "@types/classnames": "^2.2.10",
-    "@types/jest": "^26.0.8",
-    "@types/node": "^14.0.27",
-    "@types/react": "^16.9.44",
-    "@types/react-dom": "^16.9.8",
-    "@types/shortid": "0.0.29",
-    "classnames": "^2.2.6",
-    "node-sass": "^4.14.1",
-    "react": "^16.13.1",
-    "react-dom": "^16.13.1",
-    "react-scripts": "3.4.1",
-    "shortid": "^2.2.15",
-    "typescript": "^3.9.7"
+    "concurrently": "^5.2.0",
+    "gh-pages": "^3.1.0"
   },
+  "devDependencies": {},
+  "engines": {
+    "node": "12.18.1"
+},
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "format": "prettier --write src/**/*.{js,jsx,ts,tsx}",
-    "lint": "eslint --fix src/**/*.{js,jsx,ts,tsx}"
+    "build": "cd client && npm run build",
+    "install": "(cd server && npm install) && (cd client && npm install)",
+    "start:prod": "cd server && npm start",
+    "heroku-postbuild": "npm run build",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "predeploy": "cd client && npm run build",
+    "deploy": "gh-pages -d client/build"
+},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/theobroma/samurai-social-network"
   },
-  "eslintConfig": {
-    "extends": "react-app"
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
-  },
-  "devDependencies": {
-    "eslint": "^6.8.0",
-    "eslint-config-airbnb-typescript-prettier": "^3.1.0",
-    "eslint-plugin-jest": "^23.20.0",
-    "prettier": "^2.0.5"
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/theobroma/samurai-social-network/issues"
   }
 }
